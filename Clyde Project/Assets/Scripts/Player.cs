@@ -21,14 +21,15 @@ public class Player : MonoBehaviour {
     private Vector3 direction;
     private Vector3 acceleration;
 
-    // These two attributes  will prevent bullet rapid fire 
+    // These two attributes will prevent bullet rapid fire 
     private float fireDelay;
     private float fireTimer;
 
     private SceneManager manager;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         GameObject sceneManagerObj = GameObject.FindWithTag("GameController");
         manager = sceneManagerObj.GetComponent<SceneManager>();
 
@@ -39,7 +40,8 @@ public class Player : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         fireTimer -= Time.deltaTime;
 
         // Q throws arrow from bow
@@ -59,23 +61,28 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void Bow() {
+    void Bow()
+    {
         // Spawn an arrow from bow
         Instantiate(bow, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
     }
 
-    void Spear() {
+    void Spear()
+    {
         Instantiate(spear, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
     }
 
-    void Hatchet() {
+    void Hatchet()
+    {
         Instantiate(hatchet, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag.Equals("QuickGooba")) {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Equals("QuickGooba"))
+        {
             manager.MinusLives();
-            Debug.Log("I hit a Googa");
+            Debug.Log("I hit a QuickGooga");
         }
     }
 
