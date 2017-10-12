@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     // Attributes
-    public Button start;
-    public Button options;
+    //public Button start;
+    //public Button options;
 
     public string TargetSceneName;
     // Use this for initialization
@@ -18,15 +18,15 @@ public class ChangeScene : MonoBehaviour
 
     }
 
-    public void Play()
-    {
-        Application.LoadLevel("Scene1");
-    }
+    //public void Play()
+    //{
+    //    Application.LoadLevel("Scene1");
+    //}
 
-    public void Options()
-    {
-        Application.LoadLevel("Options");
-    }
+    //public void Options()
+    //{
+    //    Application.LoadLevel("Options");
+    //}
 
     // Update is called once per frame
     void Update()
@@ -37,7 +37,7 @@ public class ChangeScene : MonoBehaviour
     {
         if( collision.gameObject.tag == "Player" )
         {
-           // SceneManager.LoadScene( TargetSceneName );
+           UnityEngine.SceneManagement.SceneManager.LoadScene( TargetSceneName );
         }
     }
 }
