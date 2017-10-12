@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 435f287d8de7ebb4ba078be0d9c33524
+timeCreated: 1507784094
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pixel-Noir Skinny Caps
+  fontNames:
+  - Pixel-Noir Skinny Caps
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
