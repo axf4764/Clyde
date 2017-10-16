@@ -37,25 +37,25 @@ public class WoodManager : MonoBehaviour {
     public void SetUpManager()
     {
         float powerPercent = (huddy.Power / 1140.0f) * 100;
-        if (powerPercent > 80)
+        if (powerPercent > 90)
         {
-            spawnTimer = 0.5f;
+            spawnTimer = 0.65f;
         }
         else if (powerPercent > 60)
         {
-            spawnTimer = 0.75f;
+            spawnTimer = 1f;
         }
         else if (powerPercent > 40)
         {
-            spawnTimer = 1f;
+            spawnTimer = 1.25f;
         }
         else if (powerPercent > 20)
         {
-            spawnTimer = 1.25f;
+            spawnTimer = 1.5f;
         }
         else
         {
-            spawnTimer = 1.5f;
+            spawnTimer = 2f;
         }
 
         timer = spawnTimer;

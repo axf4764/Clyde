@@ -29,6 +29,8 @@ public class HUD : MonoBehaviour {
     private int treeAnimNum;
     private int playerAnimNum;
 
+    private int roundNum;
+
     public GameObject player;
     public GameObject tree;
     public Sprite[] trees;
@@ -70,7 +72,7 @@ public class HUD : MonoBehaviour {
     // Use this for initialization
     void Start () {
         score = 0;
-        timer = 5;
+        timer = 3;
         wood = 0;
         countDownActive = true;
         stateOne = false;
@@ -82,12 +84,20 @@ public class HUD : MonoBehaviour {
 
         playerAnimNum = 0;
         treeAnimNum = 0;
+        roundNum = 1;
 }
 	
 	// Update is called once per frame
 	void Update () {
         if (countDownActive)
         {
+            if(roundNum > 3)
+            {
+                countDownActive = false;
+                MiniGameOnePrompt.text = "YOU  GOT  A  SCORE  OF " + score + "!\n  WITH  " + wood + "  WOOD!";
+                return;
+            }
+
             if (!stateOneComplete && timer > 0.5)
             {
                 timer = (timer - Time.deltaTime);
@@ -98,24 +108,35 @@ public class HUD : MonoBehaviour {
                 MiniGameOnePrompt.text = "CATCH  THE  WOOD! BEGINS  IN  " + (int)(timer + 0.5f);
             }
 
-            if (!stateOneComplete && !stateOne && timer < 1)
+            if (!stateOneComplete && !stateOne && timer < 0.5)
             {
                 countDownActive = false;
                 stateOne = true;
-                timer = 10;
+                timer = 5;
                 MiniGameOnePrompt.text = "MASH  SPACEBAR!";
                 powerBarOutline.GetComponent<RawImage>().enabled = true;
+                powerBar.GetComponent<RawImage>().enabled = true;
+                powerBar.rectTransform.sizeDelta = new Vector2(0, 46.1f);
+                power = 0;
             }
 
             if (stateOneComplete && timer < 0.5)
             {
                 countDownActive = false;
                 stateTwo = true;
-                timer = 60;
+                timer = 15;
                 MiniGameOnePrompt.text = "MOVE  WITH  \"A\"  AND  \"D\"";
                 powerBarOutline.GetComponent<RawImage>().enabled = false;
                 powerBar.GetComponent<RawImage>().enabled = false;
-                powerBarFull.GetComponent<Text>().enabled = false;
+                if (powerBarFull.GetComponent<Text>().enabled)
+                {
+                    powerBarFull.text = "SPEED BOOST!";
+                    player.GetComponent<PlayerMovementWoodCatching>().movePos = 2;
+                } else
+                {
+                    powerBarFull.GetComponent<Text>().enabled = false;
+                    player.GetComponent<PlayerMovementWoodCatching>().movePos = 1.5f;
+                }
                 player.GetComponent<PlayerMovementWoodCatching>().enabled = true;
                 gameObject.GetComponent<WoodManager>().SetUpManager();
             }
@@ -126,7 +147,7 @@ public class HUD : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) && power < 1140)
             {
                 player.GetComponent<SpriteRenderer>().sprite = playerChopping[1];
-                power += 14.25f;
+                power += 11f * 3f;
                 //power += 100;
                 powerBar.rectTransform.sizeDelta = new Vector2(power, 46.1f);
                 score += 10;
@@ -147,6 +168,7 @@ public class HUD : MonoBehaviour {
             {
                 power = 1140;
                 powerBar.rectTransform.sizeDelta = new Vector2(power, 46.1f);
+                powerBarFull.text = "MAXIMUM POWER";
                 powerBarFull.GetComponent<Text>().enabled = true;
 
             }
@@ -160,8 +182,9 @@ public class HUD : MonoBehaviour {
             {
                 stateOneComplete = true;
                 stateOne = false;
+                stateTwoComplete = false;
                 countDownActive = true;
-                timer = 5;
+                timer = 3;
                 player.GetComponent<SpriteRenderer>().sprite = playerRunning;
             }
         }
@@ -177,11 +200,20 @@ public class HUD : MonoBehaviour {
             }
             else
             {
+                countDownActive = true;
                 stateTwoComplete = true;
-                stateTwo = false;
-                countDownActive = false;
+                stateTwo = false;                
+                stateOneComplete = false;
                 player.GetComponent<PlayerMovementWoodCatching>().enabled = false;
-                MiniGameOnePrompt.text = "YOU  GOT  A  SCORE  OF " + score + "!\n  WITH  " + wood + "  WOOD!";
+                powerBarFull.GetComponent<Text>().enabled = false;
+                timer = 3;
+                roundNum++;
+                if(roundNum <= 3)
+                {
+                    player.GetComponent<SpriteRenderer>().sprite = playerChopping[0];
+                    player.transform.position = new Vector3(-0.269f, player.transform.position.y, player.transform.position.z);
+                    player.GetComponent<SpriteRenderer>().flipX = false;
+                }
             }
         }
 	}
