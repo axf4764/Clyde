@@ -16,13 +16,16 @@ public class Player : MonoBehaviour {
     public GameObject spear;
     public GameObject hatchet;
 
+    public Sprite[] weaponStance = new Sprite[3];
+    public int weapons;
+
     private Vector3 position;
     private Vector3 velocity;
     private Vector3 direction;
     private Vector3 acceleration;
 
     // These two attributes will prevent bullet rapid fire 
-    private float fireDelay;
+    private float fireDelay = 1.0f;
     private float fireTimer;
 
     private SceneManager manager;
@@ -43,21 +46,52 @@ public class Player : MonoBehaviour {
 	void Update ()
     {
         fireTimer -= Time.deltaTime;
+        if(fireTimer <= 0)
+        {
+            fireTimer = 0;
+        }
 
-        // Q throws arrow from bow
-        if (Input.GetKey(KeyCode.Q) && fireTimer <= 0) {
-            Bow();
-            fireTimer = fireDelay;
+        // 1 equips the bow
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[0];
+            weapons = 1;
         }
-        // E throws spear
-        if (Input.GetKey(KeyCode.E) && fireTimer <= 0) {
-            Spear();
-            fireTimer = fireDelay;
+        // 2 equips the spear
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[1];
+            weapons = 2;
         }
-        // A throws hatchet
-        if (Input.GetKey(KeyCode.A) && fireTimer <= 0) {
-            Hatchet();
-            fireTimer = fireDelay;
+        // 3 equips the hatchet
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[2];
+            weapons = 3;
+        }
+
+        if(Input.GetKey(KeyCode.Space) && fireTimer <= 0)
+        {
+            switch (weapons)
+            {
+                case 1:
+                    Bow();
+                    fireTimer = fireDelay;
+                    break;
+
+                case 2:
+                    Spear();
+                    fireTimer = fireDelay;
+                    break;
+
+                case 3:
+                    Hatchet();
+                    fireTimer = fireDelay;
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
@@ -79,7 +113,7 @@ public class Player : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag.Equals("QuickGooba"))
+        if (collider.gameObject.tag.Equals("QuickGooga"))
         {
             manager.MinusLives();
             Debug.Log("I hit a QuickGooga");
