@@ -11,66 +11,98 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     // Types of weaponry
-    public int shotType;
     public GameObject bow;
     public GameObject spear;
     public GameObject hatchet;
-
+    private GameObject weaponClone;
+    public Vector3[] lanes = new Vector3[4];
+    private int lane;
     public Sprite[] weaponStance = new Sprite[3];
+    public Sprite[] weaponRest = new Sprite[3];
+    public GameObject[] iconSelector = new GameObject[3];
+    //public Vector3[] iconPos = new Vector3[3];
     public int weapons;
-
-    private Vector3 position;
-    private Vector3 velocity;
-    private Vector3 direction;
-    private Vector3 acceleration;
 
     // These two attributes will prevent bullet rapid fire 
     private float fireDelay = 1.0f;
     private float fireTimer;
 
-    private SceneManager manager;
-
     // Use this for initialization
     void Start ()
     {
-        GameObject sceneManagerObj = GameObject.FindWithTag("GameController");
-        manager = sceneManagerObj.GetComponent<SceneManager>();
-
-        position = new Vector3(0, 0, 0);
-        velocity = new Vector3(0, 0, 0);
-        direction = new Vector3(0, 1, 0);
-        acceleration = new Vector3(0, 0, 0);
+        weapons = 3;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        fireTimer -= Time.deltaTime;
-        if(fireTimer <= 0)
+        // 1 equips the bow
+        if (Input.GetKeyDown(KeyCode.UpArrow) && lane < 3)
         {
-            fireTimer = 0;
+            lane++;
+            transform.position = lanes[lane];
+            
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow) && lane > 0)
+        {
+            lane--;
+            transform.position = lanes[lane];
+        }
+        if (fireTimer > 0)
+        {
+            fireTimer -= Time.deltaTime;
+            gameObject.GetComponent<SpriteRenderer>().sprite = weaponRest[weapons - 1];
+            if (fireTimer <= 0)
+            {
+                fireTimer = 0;
+                gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[weapons - 1];
+            }
         }
 
+
         // 1 equips the bow
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.Alpha3))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[0];
+
+            iconSelector[0].GetComponent<SpriteRenderer>().enabled = true;
+            iconSelector[1].GetComponent<SpriteRenderer>().enabled = false;
+            iconSelector[2].GetComponent<SpriteRenderer>().enabled = false;
             weapons = 1;
+            if (fireTimer > 0)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = weaponRest[weapons - 1];
+            }
         }
         // 2 equips the spear
         if (Input.GetKey(KeyCode.Alpha2))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[1];
+            iconSelector[0].GetComponent<SpriteRenderer>().enabled = false;
+            iconSelector[1].GetComponent<SpriteRenderer>().enabled = true;
+            iconSelector[2].GetComponent<SpriteRenderer>().enabled = false;
             weapons = 2;
+            if (fireTimer > 0)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = weaponRest[weapons - 1];
+            }
         }
         // 3 equips the hatchet
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKey(KeyCode.Alpha1))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[2];
+            iconSelector[0].GetComponent<SpriteRenderer>().enabled = false;
+            iconSelector[1].GetComponent<SpriteRenderer>().enabled = false;
+            iconSelector[2].GetComponent<SpriteRenderer>().enabled = true;
             weapons = 3;
+            if (fireTimer > 0)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = weaponRest[weapons - 1];
+            }
         }
 
-        if(Input.GetKey(KeyCode.Space) && fireTimer <= 0)
+
+        if (Input.GetKey(KeyCode.Space) && fireTimer <= 0)
         {
             switch (weapons)
             {
@@ -98,26 +130,20 @@ public class Player : MonoBehaviour {
     void Bow()
     {
         // Spawn an arrow from bow
-        Instantiate(bow, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
+        weaponClone = Instantiate(bow, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
+        weaponClone.GetComponent<Weapon>().lane = lane + 1;
     }
 
     void Spear()
     {
-        Instantiate(spear, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
+        weaponClone = Instantiate(spear, new Vector3(transform.position.x, transform.position.y + 0.7f, -1), transform.rotation);
+        weaponClone.GetComponent<Weapon>().lane = lane + 1;
     }
 
     void Hatchet()
     {
-        Instantiate(hatchet, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag.Equals("QuickGooga"))
-        {
-            manager.MinusLives();
-            Debug.Log("I hit a QuickGooga");
-        }
+        weaponClone = Instantiate(hatchet, new Vector3(transform.position.x, transform.position.y + 0.7f, -1), transform.rotation);
+        weaponClone.GetComponent<Weapon>().lane = lane + 1;
     }
 
 }
