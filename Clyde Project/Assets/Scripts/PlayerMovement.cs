@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Screen.SetResolution(1148, 569, false);
         body = GetComponent<Rigidbody2D>();
     }
 

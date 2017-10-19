@@ -10,6 +10,7 @@ public class PlayerMovementWoodCatching : MonoBehaviour {
     void Start()
     {
         huddy = GameObject.FindGameObjectWithTag("manager").GetComponent<HUD>();
+
     }
 
     // Update is called once per frame

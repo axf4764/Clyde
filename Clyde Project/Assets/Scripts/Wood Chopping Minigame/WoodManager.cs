@@ -21,6 +21,10 @@ public class WoodManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
+        }
         if (huddy.stateTwo)
         {
             timer -= Time.deltaTime;

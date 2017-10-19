@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GoogaMoova : MonoBehaviour {
     public Sprite explodeSprite;
@@ -26,6 +27,10 @@ public class GoogaMoova : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
+        }
         if(transform.position.x < -12 || GameObject.FindGameObjectWithTag("manager").GetComponent<GoogaManager>().totalTimer <= 0 && !exploding)
         {
             killGooga();
