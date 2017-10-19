@@ -5,25 +5,22 @@ using UnityEngine;
 //Benjamin
 public class PlayerMovement : MonoBehaviour
 {
-
+    public float speed = .02f;
     private Rigidbody2D body;
     // Use this for initialization
     void Start()
     {
-        Screen.SetResolution(1148, 569, false);
         body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        DoMovement();
     }
 
-    void DoMovement()
+    public void DoMovement()
     {
         Vector2 moveVector = Vector2.zero;
-        float speed = .015f;
         //basics
         if( Input.GetKey( KeyCode.W ) )
         {
