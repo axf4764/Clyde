@@ -29,4 +29,9 @@ public class ChangeScene : MonoBehaviour
             }
         }
     }
+
+    public void OnObjectClickChangeScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(TargetSceneName);
+    }
 }
