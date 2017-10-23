@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: e3c35f886478c68489cee916a5babeb7
   - enabled: 1
@@ -17,3 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wood Chopping.unity
     guid: 321fe2cf387c55a47b4c1e02b75c087f
+  - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: 726e787b2a8fedb4f8711e56055c933c
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: e8288c4de7a772642b762191d06cb5dc

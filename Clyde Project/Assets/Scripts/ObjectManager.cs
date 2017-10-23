@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// SceneManager Script
+/// ObjectManager Script
 /// This script is to be attached to the SceneManager
 /// A script that randomly generates Googas in the scene, the Googas are chosen at random
 /// Controls the UI events such as score, lives
 /// Checks player lives and player score
 /// </summary>
 
-public class SceneManager : MonoBehaviour
+public class ObjectManager : MonoBehaviour
 {
     // Attributes
     public List<GameObject> googas;

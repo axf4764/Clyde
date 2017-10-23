@@ -61,10 +61,10 @@
      <Compile Include="Assets\Scripts\GoogaRush\GoogaMoova.cs" />
      <Compile Include="Assets\Scripts\GoogaRush\Weapon.cs" />
      <Compile Include="Assets\Scripts\Initiate.cs" />
+     <Compile Include="Assets\Scripts\ObjectManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerLogic.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\SceneManagerScript.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\HUD.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\PlayerMovementWoodCatching.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\Wood.cs" />
