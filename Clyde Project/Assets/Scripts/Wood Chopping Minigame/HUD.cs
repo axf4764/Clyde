@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour {
     public Text TimeUI;
     public Text WoodUI;
 	public Text MiniGameOnePrompt;
-	public Text MiniGameTwoPrompt;
+	public Text roundCounter;
     public Text powerBarFull;
     private int score;
     private float timer;
@@ -27,7 +27,6 @@ public class HUD : MonoBehaviour {
     public RawImage powerBar;
 
     private int treeAnimNum;
-    private int playerAnimNum;
 
     private int roundNum;
 
@@ -81,8 +80,6 @@ public class HUD : MonoBehaviour {
         stateTwoComplete = false;
         powerBarOutline.GetComponent<RawImage>().enabled = false;
         powerBarFull.GetComponent<Text>().enabled = false;
-
-        playerAnimNum = 0;
         treeAnimNum = 0;
         roundNum = 1;
 }
@@ -91,8 +88,10 @@ public class HUD : MonoBehaviour {
 	void Update () {
         if (countDownActive)
         {
-            if(roundNum > 3)
+            roundCounter.text = "ROUND: " + roundNum + " OF 3";
+            if (roundNum > 3)
             {
+                roundCounter.text = "ROUND: 3 OF 3";
                 countDownActive = false;
                 MiniGameOnePrompt.text = "YOU  GOT  A  SCORE  OF " + score + "!\n  WITH  " + wood + "  WOOD!";
                 return;
@@ -131,7 +130,7 @@ public class HUD : MonoBehaviour {
                 if (powerBarFull.GetComponent<Text>().enabled)
                 {
                     powerBarFull.text = "SPEED BOOST!";
-                    player.GetComponent<PlayerMovementWoodCatching>().movePos = 2;
+                    player.GetComponent<PlayerMovementWoodCatching>().movePos = 2.25f;
                 } else
                 {
                     powerBarFull.GetComponent<Text>().enabled = false;
@@ -210,6 +209,7 @@ public class HUD : MonoBehaviour {
                 roundNum++;
                 if(roundNum <= 3)
                 {
+                    roundCounter.text = "ROUND: " + roundNum + " OF 3";
                     player.GetComponent<SpriteRenderer>().sprite = playerChopping[0];
                     player.transform.position = new Vector3(-0.269f, player.transform.position.y, player.transform.position.z);
                     player.GetComponent<SpriteRenderer>().flipX = false;

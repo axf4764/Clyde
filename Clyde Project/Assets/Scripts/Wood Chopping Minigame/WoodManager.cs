@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class WoodManager : MonoBehaviour {
 
+    //Reference to the player
+    public GameObject player;
     //Prefabs for the bullet and its clone
     public GameObject log;
     private GameObject logClone;
+    //Timers to track how long between spawning wood and timer for keeping track of wood spawn times
     private float spawnTimer = 0;
     private float timer = 0;
     //Reference to the scene manager
@@ -15,24 +18,38 @@ public class WoodManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        //Find the hud script
         huddy = GameObject.FindGameObjectWithTag("manager").GetComponent<HUD>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Returns to the main scene
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
         }
+        //Checks to see if the wood catching phase has begun
         if (huddy.stateTwo)
         {
+            //Decrements the timer
             timer -= Time.deltaTime;
-            //Checks to see if spacebar was pressed
+            //Checks to see if the timer has run out
             if (timer < 0)
             {
-                //Creates a bullet
-                logClone = Instantiate(log, new Vector3(Random.Range(-1.7f, 1.7f), 1.125f, 0), Quaternion.identity) as GameObject;
+                float maxX = player.transform.position.x + 1;
+                while(maxX > 1.7f)
+                {
+                    maxX -= 0.1f;
+                }
+                float minX = player.transform.position.x - 1;
+                while (minX < -1.7f)
+                {
+                    minX += 0.1f;
+                }
+                //Creates a log
+                logClone = Instantiate(log, new Vector3(Random.Range(minX, maxX), 1.125f, -1), Quaternion.identity) as GameObject;
                 timer = spawnTimer;
             }
         }
@@ -40,7 +57,10 @@ public class WoodManager : MonoBehaviour {
 
     public void SetUpManager()
     {
+        //Calculate the percentage of power bar
         float powerPercent = (huddy.Power / 1140.0f) * 100;
+
+        //Set up the spawn timer
         if (powerPercent > 90)
         {
             spawnTimer = 0.65f;
@@ -62,6 +82,7 @@ public class WoodManager : MonoBehaviour {
             spawnTimer = 2f;
         }
 
+        //Set the timer as the spawn timer
         timer = spawnTimer;
     }
 }
