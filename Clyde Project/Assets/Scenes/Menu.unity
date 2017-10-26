@@ -722,7 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0f551b559e77a44bdd60dd4c67f670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetSceneName: Scene1
+  TargetSceneName: Cutscene0
 --- !u!1 &1806786035
 GameObject:
   m_ObjectHideFlags: 0
