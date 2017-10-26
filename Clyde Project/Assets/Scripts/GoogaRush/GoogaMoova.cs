@@ -27,21 +27,17 @@ public class GoogaMoova : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backslash))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
-        }
-        if(transform.position.x < -12 || GameObject.FindGameObjectWithTag("manager").GetComponent<GoogaManager>().totalTimer <= 0 && !exploding)
+        if(transform.position.x < -12  && !exploding)
         {
             killGooga();
         }
 
         if (!exploding)
         {
-            transform.position = new Vector3(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y, 0);
+            transform.position = new Vector3(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
             if(tag == "flying")
             {
-                if(transform.position.x <= -3.5)
+                if(transform.position.x <= -2.5f)
                 {
                     gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                     gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
@@ -106,4 +102,6 @@ public class GoogaMoova : MonoBehaviour {
     {
         lane = l;
     }
+
+    
 }

@@ -130,19 +130,19 @@ public class Player : MonoBehaviour {
     void Bow()
     {
         // Spawn an arrow from bow
-        weaponClone = Instantiate(bow, new Vector3(transform.position.x, transform.position.y, -1), transform.rotation);
+        weaponClone = Instantiate(bow, new Vector3(transform.position.x, transform.position.y, -6), transform.rotation);
         weaponClone.GetComponent<Weapon>().lane = lane + 1;
     }
 
     void Spear()
     {
-        weaponClone = Instantiate(spear, new Vector3(transform.position.x, transform.position.y + 0.7f, -1), transform.rotation);
+        weaponClone = Instantiate(spear, new Vector3(transform.position.x, transform.position.y + 0.7f, -6), transform.rotation);
         weaponClone.GetComponent<Weapon>().lane = lane + 1;
     }
 
     void Hatchet()
     {
-        weaponClone = Instantiate(hatchet, new Vector3(transform.position.x, transform.position.y + 0.7f, -1), transform.rotation);
+        weaponClone = Instantiate(hatchet, new Vector3(transform.position.x, transform.position.y + 0.7f, -6), transform.rotation);
         weaponClone.GetComponent<Weapon>().lane = lane + 1;
     }
 

@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour {
 	public Text MiniGameOnePrompt;
 	public Text roundCounter;
     public Text powerBarFull;
+    public Button returnButton;
     private int score;
     private float timer;
     private int wood;
@@ -53,6 +54,18 @@ public class HUD : MonoBehaviour {
         get
         {
             return score;
+        }
+    }
+
+    public int RoundNum
+    {
+        set
+        {
+            roundNum = value;
+        }
+        get
+        {
+            return roundNum;
         }
     }
 
@@ -115,7 +128,7 @@ public class HUD : MonoBehaviour {
                 MiniGameOnePrompt.text = "MASH  SPACEBAR!";
                 powerBarOutline.GetComponent<RawImage>().enabled = true;
                 powerBar.GetComponent<RawImage>().enabled = true;
-                powerBar.rectTransform.sizeDelta = new Vector2(0, 46.1f);
+                powerBar.rectTransform.localScale = new Vector3(power, powerBar.rectTransform.localScale.y, powerBar.rectTransform.localScale.z);
                 power = 0;
             }
 
@@ -143,12 +156,12 @@ public class HUD : MonoBehaviour {
         }
         if (stateOne)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && power < 1140)
+            if (Input.GetKeyDown(KeyCode.Space) && power < 1.705f)
             {
                 player.GetComponent<SpriteRenderer>().sprite = playerChopping[1];
-                power += 11f * 3f;
+                power += 0.025f;
                 //power += 100;
-                powerBar.rectTransform.sizeDelta = new Vector2(power, 46.1f);
+                powerBar.rectTransform.localScale = new Vector3(power, powerBar.rectTransform.localScale.y, powerBar.rectTransform.localScale.z);
                 score += 10;
                 ScoreUI.text = "SCORE:" + score;
                 treeAnimNum++;
@@ -158,21 +171,21 @@ public class HUD : MonoBehaviour {
                 }
                 tree.GetComponent<SpriteRenderer>().sprite = trees[treeAnimNum];
             }
-            if (Input.GetKeyUp(KeyCode.Space) && power < 1140)
+            if (Input.GetKeyUp(KeyCode.Space) && power < 1.075f)
             {
                 player.GetComponent<SpriteRenderer>().sprite = playerChopping[0];
             }
 
-            if (power > 1140)
+            if (power > 1.075f)
             {
-                power = 1140;
-                powerBar.rectTransform.sizeDelta = new Vector2(power, 46.1f);
+                power = 1.075f;
+                powerBar.rectTransform.localScale = new Vector3(power, powerBar.rectTransform.localScale.y, powerBar.rectTransform.localScale.z);
                 powerBarFull.text = "MAXIMUM POWER";
                 powerBarFull.GetComponent<Text>().enabled = true;
 
             }
 
-            if (timer > 0.5 && power < 1140)
+            if (timer > 0.5 && power < 1.075f)
             {
                 timer = (timer - Time.deltaTime);
                 TimeUI.text = "TIME: " + (int)(timer + 0.5f);
@@ -217,4 +230,8 @@ public class HUD : MonoBehaviour {
             }
         }
 	}
+
+    public void ChangeScene() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
+    }
 }

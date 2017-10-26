@@ -9,6 +9,8 @@ public class Barricade : MonoBehaviour {
     private float health;
     public Text mainText;
     public GameObject player;
+    public Sprite failSprite;
+    public List<GameObject> icons;
     // Use this for initialization
     void Start () {
         health = 1.0f;
@@ -18,9 +20,17 @@ public class Barricade : MonoBehaviour {
 	void Update () {
 		if(health <= 0)
         {
-            player.transform.position = new Vector3(-9.31f, 1.5f, -2);
+            GameObject.FindGameObjectWithTag("manager").GetComponent<GoogaManager>().EndSpawning();
+            player.transform.position = new Vector3(-7.5f, 1.5f, -2);
+            player.GetComponent<SpriteRenderer>().sprite = failSprite;
+            int loopLength = GameObject.FindGameObjectsWithTag("googaPlayerIcon").Length;
+            for (int i = 0; i < loopLength; i++)
+            {
+                Destroy(icons[i]);
+            }
+            
             Destroy(player.GetComponent<Player>());
-            mainText.text = "Defense  Failed.  You'll  get  \'em  next  time";
+            mainText.text = "<color=red>Defense  Failed</color>  You'll  get  \'em  next  time";
             mainText.color = new Color(1, 1, 1, 1);
             Destroy(healthBar);
             Destroy(healthBarOutline);

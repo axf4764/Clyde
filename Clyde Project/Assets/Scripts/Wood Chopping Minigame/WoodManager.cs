@@ -25,11 +25,7 @@ public class WoodManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //Returns to the main scene
-        if (Input.GetKeyDown(KeyCode.Backslash))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
-        }
+        
         //Checks to see if the wood catching phase has begun
         if (huddy.stateTwo)
         {
@@ -58,7 +54,7 @@ public class WoodManager : MonoBehaviour {
     public void SetUpManager()
     {
         //Calculate the percentage of power bar
-        float powerPercent = (huddy.Power / 1140.0f) * 100;
+        float powerPercent = (huddy.Power / 1.075f) * 100;
 
         //Set up the spawn timer
         if (powerPercent > 90)

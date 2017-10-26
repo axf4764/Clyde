@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour {
         {
             transform.Rotate(Vector3.back * 400  * Time.deltaTime);
         }
-        transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y, 0);
+        transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y, -6);
         if (transform.position.x > 11)
         {
             Destroy(gameObject);
