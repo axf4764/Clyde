@@ -51,24 +51,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\ChangeScene.cs" />
-     <Compile Include="Assets\Scripts\Dialogue.cs" />
-     <Compile Include="Assets\Scripts\Fader.cs" />
+     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
      <Compile Include="Assets\Scripts\GoogaRush\Barricade.cs" />
      <Compile Include="Assets\Scripts\GoogaRush\BulletMngr.cs" />
+     <Compile Include="Assets\Scripts\GoogaRush\GoogaButtonScript.cs" />
      <Compile Include="Assets\Scripts\GoogaRush\GoogaManager.cs" />
      <Compile Include="Assets\Scripts\GoogaRush\GoogaMoova.cs" />
+     <Compile Include="Assets\Scripts\GoogaRush\Player.cs" />
      <Compile Include="Assets\Scripts\GoogaRush\Weapon.cs" />
      <Compile Include="Assets\Scripts\Initiate.cs" />
      <Compile Include="Assets\Scripts\ObjectManager.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\PlayerLogic.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Overworld\CameraScript.cs" />
+     <Compile Include="Assets\Scripts\Overworld\CutsceneDialogue.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Dialogue.cs" />
+     <Compile Include="Assets\Scripts\Overworld\DialogueEvents.cs" />
+     <Compile Include="Assets\Scripts\Overworld\Fader.cs" />
+     <Compile Include="Assets\Scripts\Overworld\PlayerLogic.cs" />
+     <Compile Include="Assets\Scripts\Overworld\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Stealh Minigame\GuardMovement.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\HUD.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\PlayerMovementWoodCatching.cs" />
+     <Compile Include="Assets\Scripts\Wood Chopping Minigame\returnButtonWood.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\Wood.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\WoodManager.cs" />
+     <None Include="Assets\Resources\DialogueLines\English\Past_0.txt" />
+     <None Include="Assets\Resources\DialogueLines\English\Present_Intro.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
