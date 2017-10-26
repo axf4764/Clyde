@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1074d9e74e5622344b324b7b4d86d674
-timeCreated: 1507784094
+guid: edb542d8b842f9d469da7a61f117d0e9
+timeCreated: 1509060612
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Pixel-Noir
+  fontName: Perfect DOS VGA 437
   fontNames:
-  - Pixel-Noir
+  - Perfect DOS VGA 437
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

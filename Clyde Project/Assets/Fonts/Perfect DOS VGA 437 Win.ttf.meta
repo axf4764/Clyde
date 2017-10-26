@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e618eac7c0c0d994991ad84a29c33ef9
-timeCreated: 1507784094
+guid: 39ef96293d76fd346b30b6052bf9b21c
+timeCreated: 1509060612
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Pixel-Noir Skinny Short
+  fontName: Perfect DOS VGA 437 Win
   fontNames:
-  - Pixel-Noir Skinny Short
+  - Perfect DOS VGA 437 Win
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
