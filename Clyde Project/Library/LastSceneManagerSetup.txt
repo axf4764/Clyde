@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Googa Rush.unity
+=======
+- path: Assets/Scenes/Menu.unity
+>>>>>>> 9dfc45d347bcc27f9876a592db648ebc456c64cd
   isLoaded: 1
   isActive: 1

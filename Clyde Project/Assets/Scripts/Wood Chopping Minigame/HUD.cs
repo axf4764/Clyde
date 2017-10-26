@@ -37,6 +37,9 @@ public class HUD : MonoBehaviour {
     public Sprite[] playerChopping;
     public Sprite playerRunning;
 
+    //Benjamin - adding some stuff for gamemanager's sake
+    public bool gameComplete = false;
+    private int endGameTimer = 0;
     public float Power
     {
         get
@@ -97,8 +100,24 @@ public class HUD : MonoBehaviour {
         roundNum = 1;
 }
 	
+    IEnumerator NextScene()
+    {
+        endGameTimer++;
+        yield return new WaitForSeconds( 1 );
+    }
 	// Update is called once per frame
 	void Update () {
+
+        if( gameComplete )
+        {
+            StartCoroutine(NextScene());
+            if( endGameTimer >=4 )
+            {
+                //TODO: change this to a variable instead of hardcoded
+                UnityEngine.SceneManagement.SceneManager.LoadScene( "Main" );
+            }
+        }
+
         if (countDownActive)
         {
             roundCounter.text = "ROUND: " + roundNum + " OF 3";
@@ -107,6 +126,11 @@ public class HUD : MonoBehaviour {
                 roundCounter.text = "ROUND: 3 OF 3";
                 countDownActive = false;
                 MiniGameOnePrompt.text = "YOU  GOT  A  SCORE  OF " + score + "!\n  WITH  " + wood + "  WOOD!";
+
+                GameManagerScript.instance.HasWood = true;
+
+                gameComplete = true;
+
                 return;
             }
 
