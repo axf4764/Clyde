@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     {
         if (Vector2.Distance(this.transform.position, Vector2.zero) > 1.0f)
         {
-            this.transform.LookAt(Vector2.zero);
+            //this.transform.LookAt(Vector2.zero);
             this.transform.position = Vector2.MoveTowards(this.transform.position, Vector2.zero, 0.01f);
         }
         else
