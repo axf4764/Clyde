@@ -120,10 +120,10 @@ public class HUD : MonoBehaviour {
 
         if (countDownActive)
         {
-            roundCounter.text = "ROUND: " + roundNum + " OF 3";
+            roundCounter.text = "ROUND:" + roundNum + "OF3";
             if (roundNum > 3)
             {
-                roundCounter.text = "ROUND: 3 OF 3";
+                roundCounter.text = "ROUND:3OF3";
                 countDownActive = false;
                 MiniGameOnePrompt.text = "YOU  GOT  A  SCORE  OF " + score + "!\n  WITH  " + wood + "  WOOD!";
 
