@@ -183,7 +183,7 @@ public class HUD : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) && power < 1.705f)
             {
                 player.GetComponent<SpriteRenderer>().sprite = playerChopping[1];
-                power += 0.025f;
+                power += 0.036f;
                 //power += 100;
                 powerBar.rectTransform.localScale = new Vector3(power, powerBar.rectTransform.localScale.y, powerBar.rectTransform.localScale.z);
                 score += 10;
@@ -256,6 +256,6 @@ public class HUD : MonoBehaviour {
 	}
 
     public void ChangeScene() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("main");
     }
 }

@@ -10,6 +10,7 @@ public class GoogaManager : MonoBehaviour {
     public Vector3[] lanes;
     public RawImage[] waveIcons;
     public RawImage googaIcon;
+    public GameObject retyrButton;
     private float spawnTimer = 1.5f;
     private float timer = 2;
     public float waveTimer = 5;
@@ -32,8 +33,7 @@ public class GoogaManager : MonoBehaviour {
         waves.Add(SetUpWave(12));
         waves.Add(SetUpWave(15));
         waves.Add(SetUpWave(20));
-
-        iconDist = 100 / waves[0].Count;
+        iconDist = 100 / (waves[0].Count + 1);
     }
 
     public List<List<int>> Waves
@@ -103,7 +103,7 @@ public class GoogaManager : MonoBehaviour {
                     mainText.text = "WAVE " + waveNumber;
                     if (waves.Count != 0)
                     {
-                        iconDist = 100 / waves[0].Count;
+                        iconDist = 100 / (waves[0].Count + 1);
                         fadeAmount = 1;
                     }
 
@@ -112,8 +112,12 @@ public class GoogaManager : MonoBehaviour {
             if (waves.Count == 0)
             {
                 if (GameObject.FindGameObjectsWithTag("flying").Length == 0 && GameObject.FindGameObjectsWithTag("quick").Length == 0 && GameObject.FindGameObjectsWithTag("strong").Length == 0)
+                {
                     mainText.color = new Color(1, 1, 1, 1);
-                mainText.text = "Googas Defeated!";
+                    mainText.text = "Googas Defeated!";
+                    Destroy(retyrButton);
+                    EndSpawning();
+                }
             }
         }
     }
@@ -152,7 +156,7 @@ public class GoogaManager : MonoBehaviour {
 
     public void ReturnMain()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("main");
     }
 
     public void Retry()
