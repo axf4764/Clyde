@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Player Script
@@ -19,7 +20,8 @@ public class Player : MonoBehaviour {
     private int lane;
     public Sprite[] weaponStance = new Sprite[3];
     public Sprite[] weaponRest = new Sprite[3];
-    public GameObject[] iconSelector = new GameObject[3];
+    public RawImage[] iconSelector = new RawImage[3];
+    public GameObject[] laneHighlighter = new GameObject[3];
     //public Vector3[] iconPos = new Vector3[3];
     public int weapons;
 
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        lane = 0;
+        transform.position = lanes[0];
         weapons = 3;
     }
 	
@@ -41,12 +45,23 @@ public class Player : MonoBehaviour {
         {
             lane++;
             transform.position = lanes[lane];
+            laneHighlighter[0].GetComponent<SpriteRenderer>().enabled = false;
+            laneHighlighter[1].GetComponent<SpriteRenderer>().enabled = false;
+            laneHighlighter[2].GetComponent<SpriteRenderer>().enabled = false;
+            if (lane != 3)
+            {
+                laneHighlighter[lane].GetComponent<SpriteRenderer>().enabled = true;
+            }
             
         }
         else if(Input.GetKeyDown(KeyCode.DownArrow) && lane > 0)
         {
             lane--;
             transform.position = lanes[lane];
+            laneHighlighter[0].GetComponent<SpriteRenderer>().enabled = false;
+            laneHighlighter[1].GetComponent<SpriteRenderer>().enabled = false;
+            laneHighlighter[2].GetComponent<SpriteRenderer>().enabled = false;
+            laneHighlighter[lane].GetComponent<SpriteRenderer>().enabled = true;
         }
         if (fireTimer > 0)
         {
@@ -65,9 +80,9 @@ public class Player : MonoBehaviour {
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[0];
 
-            iconSelector[0].GetComponent<SpriteRenderer>().enabled = true;
-            iconSelector[1].GetComponent<SpriteRenderer>().enabled = false;
-            iconSelector[2].GetComponent<SpriteRenderer>().enabled = false;
+            iconSelector[0].GetComponent<RawImage>().enabled = true;
+            iconSelector[1].GetComponent<RawImage>().enabled = false;
+            iconSelector[2].GetComponent<RawImage>().enabled = false;
             weapons = 1;
             if (fireTimer > 0)
             {
@@ -78,9 +93,9 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.Alpha2))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[1];
-            iconSelector[0].GetComponent<SpriteRenderer>().enabled = false;
-            iconSelector[1].GetComponent<SpriteRenderer>().enabled = true;
-            iconSelector[2].GetComponent<SpriteRenderer>().enabled = false;
+            iconSelector[0].GetComponent<RawImage>().enabled = false;
+            iconSelector[1].GetComponent<RawImage>().enabled = true;
+            iconSelector[2].GetComponent<RawImage>().enabled = false;
             weapons = 2;
             if (fireTimer > 0)
             {
@@ -91,9 +106,9 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.Alpha1))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = weaponStance[2];
-            iconSelector[0].GetComponent<SpriteRenderer>().enabled = false;
-            iconSelector[1].GetComponent<SpriteRenderer>().enabled = false;
-            iconSelector[2].GetComponent<SpriteRenderer>().enabled = true;
+            iconSelector[0].GetComponent<RawImage>().enabled = false;
+            iconSelector[1].GetComponent<RawImage>().enabled = false;
+            iconSelector[2].GetComponent<RawImage>().enabled = true;
             weapons = 3;
             if (fireTimer > 0)
             {
