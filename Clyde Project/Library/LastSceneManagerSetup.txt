@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Googa Rush.unity
+- path: Assets/Scenes/Time Travel.unity
   isLoaded: 1
   isActive: 1
