@@ -38,7 +38,6 @@ public class PlayerMovementWoodCatching : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        huddy.Score += 50;
         huddy.Wood ++;
         Destroy(col.gameObject);
     }
