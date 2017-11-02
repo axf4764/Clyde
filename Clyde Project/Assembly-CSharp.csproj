@@ -70,6 +70,9 @@
      <Compile Include="Assets\Scripts\Overworld\PlayerLogic.cs" />
      <Compile Include="Assets\Scripts\Overworld\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Stealh Minigame\GuardMovement.cs" />
+     <Compile Include="Assets\Scripts\Type Master\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Type Master\GameController.cs" />
+     <Compile Include="Assets\Scripts\Type Master\KeyIndicator.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\HUD.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\PlayerMovementWoodCatching.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\returnButtonWood.cs" />
