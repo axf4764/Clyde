@@ -21,8 +21,10 @@ GameObject:
   - component: {fileID: 4322203383865512}
   - component: {fileID: 212564225014458384}
   - component: {fileID: 50367384025320494}
+  - component: {fileID: 114496701216666712}
+  - component: {fileID: 58109400319922850}
   m_Layer: 0
-  m_Name: missile
+  m_Name: bullet
   m_TagString: missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,12 +57,39 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58109400319922850
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439108403280926}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
+--- !u!114 &114496701216666712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439108403280926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0519bd686e3481c43bb023a3c76fbbe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
 --- !u!212 &212564225014458384
 SpriteRenderer:
   m_ObjectHideFlags: 1

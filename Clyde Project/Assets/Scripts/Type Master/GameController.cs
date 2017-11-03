@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -16,9 +17,13 @@ public class GameController : MonoBehaviour
     private int lives;
     private int score;
 
+    const int buttonWidth = 120;
+    const int buttonHeight = 60;
+
     // UI text info
     public Text scoreText;
     public Text livesText;
+    public GameObject retryText;
 
     // Lives Health Bar UI
     public SpriteRenderer lifeSprite;
@@ -35,6 +40,8 @@ public class GameController : MonoBehaviour
 
         score = 0;
         lives = 3;
+
+        retryText.GetComponent<Text>().enabled = false;
     }
 
     // Update is called once per frame
@@ -62,6 +69,14 @@ public class GameController : MonoBehaviour
 
             }
         }
+
+        if(score == 200)
+        {
+            if(GUI.Button(new Rect(Screen.width / 2 - (buttonWidth / 2), (1 * Screen.height / 3) - (buttonHeight / 2), buttonWidth, buttonHeight), "RETRY"))
+            {
+                
+            }
+        }
     }
 
     public void MinusLives()
@@ -77,13 +92,16 @@ public class GameController : MonoBehaviour
         {
             lifeSprite.sprite = hearts[2];
         }
-
-        // If Clyde's lives has reached 0, restart game
-        if (lives < 1)
+        if(lives < 1)
         {
-            lifeSprite.sprite = null;
-            //Application.LoadLevel("GameOver");
+            Retry();
         }
     }
 
+    public void Retry()
+    {
+        lifeSprite.sprite = null;
+        retryText.GetComponent<Text>().enabled = true;
+        SceneManager.LoadScene("Type Master");
+    }
 }

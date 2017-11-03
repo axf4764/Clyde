@@ -3,44 +3,35 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-
-    public GameObject missile;
-    float fireprogress = 0.0f;
-    private float shotsPerSecond = 0.5f;
+    public GameObject bulletPrefab;
+    GameObject player;
 
 
     // Use this for initialization
     void Start()
     {
-
+        Invoke("Shoot", 1f);
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(this.transform.position, Vector2.zero) > 1.0f)
+        if (Vector2.Distance(this.transform.position, player.transform.position) >   1.0f)
         {
-            //this.transform.LookAt(Vector2.zero);
-            this.transform.position = Vector2.MoveTowards(this.transform.position, Vector2.zero, 0.01f);
-        }
-        else
-        {
-            fireprogress += Time.deltaTime;
-            if (fireprogress > 1.50f)
-            {
-                Debug.Log("fire");
-                Shoot();
-                fireprogress -= 1.50f;
-            }
+            this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, 0.01f);
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
-        Vector3 missilePos = this.transform.position;
-        Vector3 playerPos = GameObject.FindWithTag("Player").transform.position;
-        GameObject firedMissile = Instantiate(missile, missilePos, Quaternion.identity) as GameObject;
-        firedMissile.GetComponent<Rigidbody2D>().velocity = (playerPos - transform.position).normalized * 1;
-        
+        if(player != null)
+        {
+            GameObject bullet = (GameObject)Instantiate(bulletPrefab);
+            bullet.transform.position = transform.position;
+            Vector2 direction = player.transform.position - bullet.transform.position;
+            bullet.GetComponent<Bullet>().SetDirection(direction);
+        }
     }
+
 }
