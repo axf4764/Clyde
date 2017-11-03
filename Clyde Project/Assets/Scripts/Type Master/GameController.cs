@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -12,10 +13,28 @@ public class GameController : MonoBehaviour
     public static List<string> keys = new List<string>();
     public static Dictionary<string, KeyIndicator> key2enemy = new Dictionary<string, KeyIndicator>();
 
+    private int lives;
+    private int score;
+
+    // UI text info
+    public Text scoreText;
+    public Text livesText;
+
+    // Lives Health Bar UI
+    public SpriteRenderer lifeSprite;
+    public Sprite[] hearts;
+
+
     // Use this for initialization
     void Start()
     {
         GameController.controller = this;
+        scoreText.text = "SCORE: " + score;
+        livesText.text = "LIVES: ";
+        lifeSprite.sprite = hearts[0];
+
+        score = 0;
+        lives = 3;
     }
 
     // Update is called once per frame
@@ -38,7 +57,33 @@ public class GameController : MonoBehaviour
                 keys.Remove(letter);
                 key2enemy[letter].Destroy();
                 key2enemy.Remove(letter);
+                score += 10;
+                scoreText.text = "SCORE: " + score;
+
             }
         }
     }
+
+    public void MinusLives()
+    {
+        lives--;
+        livesText.text = "LIVES:";
+
+        if(lives == 2)
+        {
+            lifeSprite.sprite = hearts[1];
+        }
+        if (lives == 1)
+        {
+            lifeSprite.sprite = hearts[2];
+        }
+
+        // If Clyde's lives has reached 0, restart game
+        if (lives < 1)
+        {
+            lifeSprite.sprite = null;
+            //Application.LoadLevel("GameOver");
+        }
+    }
+
 }

@@ -4,7 +4,10 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
 
+    public GameObject missile;
     float fireprogress = 0.0f;
+    private float shotsPerSecond = 0.5f;
+
 
     // Use this for initialization
     void Start()
@@ -26,8 +29,18 @@ public class Enemy : MonoBehaviour
             if (fireprogress > 1.50f)
             {
                 Debug.Log("fire");
+                Shoot();
                 fireprogress -= 1.50f;
             }
         }
+    }
+
+    void Shoot()
+    {
+        Vector3 missilePos = this.transform.position;
+        Vector3 playerPos = GameObject.FindWithTag("Player").transform.position;
+        GameObject firedMissile = Instantiate(missile, missilePos, Quaternion.identity) as GameObject;
+        firedMissile.GetComponent<Rigidbody2D>().velocity = (playerPos - transform.position).normalized * 1;
+        
     }
 }
