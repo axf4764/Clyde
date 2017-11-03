@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 423259723}
   m_Layer: 0
   m_Name: ClockPartRight
-  m_TagString: Test
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aac182cf7bcf5c409c9b04eee513a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: fc579c43886c269489d45f4ce25fd11d, type: 2}
+  isColliding: 0
 --- !u!1 &591953591
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 591953596}
   m_Layer: 0
   m_Name: ClockPart
-  m_TagString: Test
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,7 +471,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 591953591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 1.29, z: 0}
+  m_LocalPosition: {x: 0.06, y: 1.28, z: 0}
   m_LocalScale: {x: 13.46308, y: 13.46308, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aac182cf7bcf5c409c9b04eee513a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: fc579c43886c269489d45f4ce25fd11d, type: 2}
+  isColliding: 0
 --- !u!50 &591953596
 Rigidbody2D:
   serializedVersion: 4
@@ -615,9 +615,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 863627180}
+  - component: {fileID: 863627181}
   m_Layer: 0
   m_Name: Clock Hand 2
-  m_TagString: Untagged
+  m_TagString: Test
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,13 +631,28 @@ Transform:
   m_GameObject: {fileID: 863627179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.59, z: 0}
-  m_LocalScale: {x: 0.2531247, y: 0.41874984, z: 1}
+  m_LocalScale: {x: 0.2531247, y: 0.41874984, z: 0.2531247}
   m_Children:
   - {fileID: 671277806}
   - {fileID: 2058730229}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &863627181
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863627179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.3, y: 3.3}
+  m_Direction: 0
 --- !u!1 &997720742
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +667,7 @@ GameObject:
   - component: {fileID: 997720745}
   m_Layer: 0
   m_Name: ClockPartBottom
-  m_TagString: Test
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,7 +721,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 997720742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: -1.21, z: 0}
+  m_LocalPosition: {x: -0.28, y: -1.21, z: -0.09}
   m_LocalScale: {x: 13.46308, y: 13.46308, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -722,7 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aac182cf7bcf5c409c9b04eee513a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: fc579c43886c269489d45f4ce25fd11d, type: 2}
+  isColliding: 0
 --- !u!50 &997720746
 Rigidbody2D:
   serializedVersion: 4
@@ -782,7 +798,7 @@ Transform:
   m_GameObject: {fileID: 1029430713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.59, z: 0}
-  m_LocalScale: {x: 0.2531247, y: 0.41874984, z: 1}
+  m_LocalScale: {x: 0.2531247, y: 0.41874984, z: 0.2531247}
   m_Children:
   - {fileID: 1826920850}
   - {fileID: 1837306798}
@@ -900,7 +916,7 @@ GameObject:
   - component: {fileID: 1381371460}
   m_Layer: 0
   m_Name: Watch
-  m_TagString: Untagged
+  m_TagString: Clock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -919,7 +935,14 @@ MonoBehaviour:
   hand1: {fileID: 1029430713}
   hand2: {fileID: 863627179}
   hand3: {fileID: 2021011054}
-  clockPart: {fileID: 591953591}
+  clockPart1: {fileID: 591953591}
+  clockPart2: {fileID: 423259718}
+  clockPart3: {fileID: 1798498820}
+  clockPart4: {fileID: 997720742}
+  currentHand: {fileID: 0}
+  currentPart: {fileID: 0}
+  handList: []
+  partList: []
 --- !u!212 &1381371461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -989,7 +1012,7 @@ GameObject:
   - component: {fileID: 1798498823}
   m_Layer: 0
   m_Name: ClockPartLeft
-  m_TagString: Test
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1043,7 +1066,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1798498820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.15, y: 0.06, z: 0}
+  m_LocalPosition: {x: -1.15, y: 0.06, z: -0.08}
   m_LocalScale: {x: 13.46308, y: 13.46308, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1060,7 +1083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aac182cf7bcf5c409c9b04eee513a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: fc579c43886c269489d45f4ce25fd11d, type: 2}
+  isColliding: 0
 --- !u!50 &1798498824
 Rigidbody2D:
   serializedVersion: 4
@@ -1271,9 +1294,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2021011055}
+  - component: {fileID: 2021011056}
   m_Layer: 0
   m_Name: Clock Hand 3
-  m_TagString: Untagged
+  m_TagString: Test
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1286,13 +1310,28 @@ Transform:
   m_GameObject: {fileID: 2021011054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.59, z: 0}
-  m_LocalScale: {x: 0.2531247, y: 0.41874984, z: 1}
+  m_LocalScale: {x: 0.2531247, y: 0.41874984, z: 0.2531247}
   m_Children:
   - {fileID: 373481533}
   - {fileID: 1152568046}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &2021011056
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2021011054}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.3, y: 3.3}
+  m_Direction: 0
 --- !u!1 &2058730228
 GameObject:
   m_ObjectHideFlags: 0

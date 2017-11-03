@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Type Master.unity
+=======
+- path: Assets/Scenes/Time Travel.unity
+>>>>>>> 3f005f89458c47ac40ca86c16ad04f034f2510fb
   isLoaded: 1
   isActive: 1

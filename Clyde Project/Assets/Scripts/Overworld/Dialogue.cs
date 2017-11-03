@@ -69,7 +69,9 @@ public class Dialogue : MonoBehaviour
         {
             return;
         }
-        if( Input.GetKeyDown( KeyCode.E ) && playerInRange )
+        //Theres a bug where you have to press E twice at the end
+        //The second time you press E might be picked up here and break more stuff
+        if( Input.GetKeyDown( KeyCode.E ) && playerInRange  )
         {
             if( !_isDialoguePlaying )
             {
@@ -153,14 +155,16 @@ public class Dialogue : MonoBehaviour
             {
                 dialoguePanel.SetActive( false );
                 playerRef.CurrentState = PlayerLogic.PlayerState.Default;
-                break;
+                HideIcons();
+                _isEndOfDialogue = false; //sets the dialogue icon back to triangle for the next time its opened
+                yield break;
             }
 
             yield return 0;
         }
 
-        HideIcons();
-        _isEndOfDialogue = false;
+        //HideIcons();
+        //_isEndOfDialogue = false;
 
     }
 
@@ -250,6 +254,7 @@ public class Dialogue : MonoBehaviour
                     finishedDrawing = false;
                     currentDialogueIndex = 0;
                     _isDialoguePlaying = false;
+                    _isStringBeingRevealed = false;
                 }
             }
         }
@@ -262,6 +267,7 @@ public class Dialogue : MonoBehaviour
                 finishedDrawing = false;
                 currentDialogueIndex = 0;
                 _isDialoguePlaying = false;
+                _isStringBeingRevealed = false;
             }
         }
 

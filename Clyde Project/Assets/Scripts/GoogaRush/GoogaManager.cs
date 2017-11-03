@@ -19,7 +19,7 @@ public class GoogaManager : MonoBehaviour {
     private List<List<int>> waves;
     private int waveNumber = 1;
     private float iconDist;
-    private bool spawnWaves;
+    private bool spawnWaves = true;
     
 
     // Use this for initialization

@@ -18,7 +18,7 @@ public class GoogaButtonScript : MonoBehaviour {
     void Update()
     {
 
-        if (!manager.GetComponent<GoogaManager>().SpawnWaves)
+        if (manager.GetComponent<GoogaManager>().enabled && !manager.GetComponent<GoogaManager>().SpawnWaves)
         {
             GetComponent<Button>().enabled = true;
             GetComponentInChildren<Text>().enabled = true;

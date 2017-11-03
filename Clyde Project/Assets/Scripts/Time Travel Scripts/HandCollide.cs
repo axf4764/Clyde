@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandCollide : MonoBehaviour 
 {
-	public Material mat;
+	public bool isColliding;
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,9 +19,10 @@ public class HandCollide : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "Test") 
+		if (col.gameObject.tag == "Test" && (GameObject.FindGameObjectWithTag("Clock").GetComponent<RotateHand>().currentHand == col.gameObject) && (gameObject == GameObject.FindGameObjectWithTag("Clock").GetComponent<RotateHand>().currentPart)) 
 		{
-			gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+			GameObject.FindGameObjectWithTag("Clock").GetComponent<RotateHand>().currentPart.GetComponent<SpriteRenderer> ().color = Color.red;
+			isColliding = true;
 		}
 	}
 
@@ -29,7 +30,8 @@ public class HandCollide : MonoBehaviour
 	{
 		if (coll.gameObject.tag == "Test") 
 		{
-			gameObject.GetComponent<SpriteRenderer> ().color = Color.white;
+			GameObject.FindGameObjectWithTag("Clock").GetComponent<RotateHand>().currentPart.GetComponent<SpriteRenderer> ().color = Color.white;
+			isColliding = false;
 		}
 	}
 }

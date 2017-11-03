@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
     //array of text values for UI prompts
-    public Text ScoreUI;
     public Text TimeUI;
     public Text WoodUI;
 	public Text MiniGameOnePrompt;
 	public Text roundCounter;
     public Text powerBarFull;
     public Button returnButton;
-    private int score;
     private float timer;
     private int wood;
     private float power;
@@ -48,18 +46,6 @@ public class HUD : MonoBehaviour {
         }
     }
 
-    public int Score
-    {
-        set
-        {
-            score = value;
-        }
-        get
-        {
-            return score;
-        }
-    }
-
     public int RoundNum
     {
         set
@@ -86,7 +72,6 @@ public class HUD : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        score = 0;
         timer = 3;
         wood = 0;
         countDownActive = true;
@@ -125,7 +110,7 @@ public class HUD : MonoBehaviour {
             {
                 roundCounter.text = "ROUND:3OF3";
                 countDownActive = false;
-                MiniGameOnePrompt.text = "YOU  GOT  A  SCORE  OF " + score + "!\n  WITH  " + wood + "  WOOD!";
+                MiniGameOnePrompt.text = "YOU  GOT " + wood + "  WOOD!";
 
                 GameManagerScript.instance.HasWood = true;
 
@@ -186,8 +171,6 @@ public class HUD : MonoBehaviour {
                 power += 0.036f;
                 //power += 100;
                 powerBar.rectTransform.localScale = new Vector3(power, powerBar.rectTransform.localScale.y, powerBar.rectTransform.localScale.z);
-                score += 10;
-                ScoreUI.text = "SCORE:" + score;
                 treeAnimNum++;
                 if(treeAnimNum > 1)
                 {
@@ -227,8 +210,7 @@ public class HUD : MonoBehaviour {
 
         if (stateTwo)
         {
-            ScoreUI.text = "SCORE:" + score;
-            WoodUI.text = wood + ":WOOD";
+            WoodUI.text = "WOOD:" +wood;
             if (timer > 0.5)
             {
                 timer = (timer - Time.deltaTime);
