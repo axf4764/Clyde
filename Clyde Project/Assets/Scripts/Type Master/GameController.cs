@@ -54,9 +54,9 @@ public class GameController : MonoBehaviour
     void Update()
     {
         progress += Time.deltaTime;
-        if (progress > 1.5f)
+        if (progress > 2.5f)
         {
-            progress -= 1.5f;
+            progress -= 2.5f;
             GameObject instance = Instantiate(Resources.Load("Enemy")) as GameObject;
             instance.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), Random.Range(-0.9f, 0.9f));
         }

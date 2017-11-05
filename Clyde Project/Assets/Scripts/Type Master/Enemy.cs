@@ -17,9 +17,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(this.transform.position, player.transform.position) >   1.0f)
+        if (Vector3.Distance(transform.position, player.transform.position) >  1.0f)
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, 0.01f);
+            transform.position += transform.forward * 4 * Time.deltaTime;
+            //this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, 0.01f);
         }
     }
 
@@ -29,7 +30,7 @@ public class Enemy : MonoBehaviour
         {
             GameObject bullet = (GameObject)Instantiate(bulletPrefab);
             bullet.transform.position = transform.position;
-            Vector2 direction = player.transform.position - bullet.transform.position;
+            Vector3 direction = player.transform.position - bullet.transform.position;
             bullet.GetComponent<Bullet>().SetDirection(direction);
         }
     }
