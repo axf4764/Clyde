@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-
-    float progress = 0.0f;
+    // Attributes
+    public float progress = 0.0f;
     string[] alphabet = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", };
 
     public static GameController controller;
@@ -17,18 +17,26 @@ public class GameController : MonoBehaviour
     private int lives;
     private int score;
 
-    const int buttonWidth = 120;
-    const int buttonHeight = 60;
-
     // UI text info
     public Text scoreText;
     public Text livesText;
     public GameObject retryText;
+    public GameObject returnText;
 
     // Lives Health Bar UI
     public SpriteRenderer lifeSprite;
     public Sprite[] hearts;
 
+    private bool gameOver = false;
+
+    // Properties
+    public bool GameOver
+    {
+        get
+        {
+            return gameOver;
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -40,21 +48,17 @@ public class GameController : MonoBehaviour
 
         score = 0;
         lives = 3;
-
-        retryText.GetComponent<Text>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         progress += Time.deltaTime;
-        if (progress > 0.5f)
+        if (progress > 1.5f)
         {
-            progress -= 0.5f;
+            progress -= 1.5f;
             GameObject instance = Instantiate(Resources.Load("Enemy")) as GameObject;
-            instance.transform.position = new Vector2(Random.Range(-2.0f, 2.0f), Random.Range(-1.0f, 1.0f));
-            //instance.transform.rotation = Quaternion.identity;
-
+            instance.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), Random.Range(-0.9f, 0.9f));
         }
 
         foreach (string letter in alphabet)
@@ -66,16 +70,12 @@ public class GameController : MonoBehaviour
                 key2enemy.Remove(letter);
                 score += 10;
                 scoreText.text = "SCORE: " + score;
-
             }
         }
 
-        if(score == 200)
+        if(score > 200)
         {
-            if(GUI.Button(new Rect(Screen.width / 2 - (buttonWidth / 2), (1 * Screen.height / 3) - (buttonHeight / 2), buttonWidth, buttonHeight), "RETRY"))
-            {
-                
-            }
+            SceneManager.LoadScene("Time Travel");
         }
     }
 
@@ -94,14 +94,18 @@ public class GameController : MonoBehaviour
         }
         if(lives < 1)
         {
-            Retry();
+            gameOver = true;
+            lifeSprite.sprite = null;
         }
     }
 
     public void Retry()
     {
-        lifeSprite.sprite = null;
-        retryText.GetComponent<Text>().enabled = true;
         SceneManager.LoadScene("Type Master");
+    }
+
+    public void Return()
+    {
+        SceneManager.LoadScene("Intro Type");
     }
 }

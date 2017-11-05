@@ -74,10 +74,11 @@
      <Compile Include="Assets\Scripts\Time Travel Scripts\HandCollide.cs" />
      <Compile Include="Assets\Scripts\Time Travel Scripts\RotateHand.cs" />
      <Compile Include="Assets\Scripts\Type Master\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Type Master\ButtonControl.cs" />
      <Compile Include="Assets\Scripts\Type Master\Enemy.cs" />
      <Compile Include="Assets\Scripts\Type Master\GameController.cs" />
      <Compile Include="Assets\Scripts\Type Master\KeyIndicator.cs" />
-     <Compile Include="Assets\Scripts\Type Master\PlayerCtrl.cs" />
+     <Compile Include="Assets\Scripts\Type Master\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\HUD.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\PlayerMovementWoodCatching.cs" />
      <Compile Include="Assets\Scripts\Wood Chopping Minigame\returnButtonWood.cs" />
