@@ -32,6 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+<<<<<<< HEAD
 Clyde Project/Temp/UnityLockfile
 *.mdb
 *.dll
@@ -59,3 +60,7 @@ Clyde Project/Library/InspectorExpandedItems.asset
 Clyde Project/Library/CurrentLayout.dwlt
 Clyde Project/Library/assetDatabase3
 Clyde Project/ProjectSettings/TagManager.asset
+=======
+Clyde Project/Temp/
+Clyde Project/Library/metadata
+>>>>>>> 7dd411dc94f70b0465fd70ab31adb00d3322aea1
