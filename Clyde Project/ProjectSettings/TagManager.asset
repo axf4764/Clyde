@@ -15,8 +15,13 @@ TagManager:
   - spear
   - arrow
   - googaPlayerIcon
+<<<<<<< HEAD
   - Test
   - missile
+=======
+  - Interactable
+  - Test
+>>>>>>> Merging-some-stuff
   layers:
   - Default
   - TransparentFX
@@ -27,6 +32,7 @@ TagManager:
   - 
   - 
   - 
+  - unselectable
   - 
   - 
   - 

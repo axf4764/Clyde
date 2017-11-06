@@ -45,7 +45,7 @@ public class GuardMovement : MonoBehaviour
         
         #region Guard Position
         //Go to the next waypoint, looping
-        if( Vector2.Distance( transform.position, WayPoints[ index ].position ) < .05f )
+        if( Vector2.Distance( transform.position, WayPoints[ index ].position ) < .01f )
         {
             index = ( index + 1 ) % WayPoints.Length;
             guardState = GuardState.Idle;
@@ -57,14 +57,15 @@ public class GuardMovement : MonoBehaviour
             guardState = GuardState.Patrolling;
         }
 
+        Vector3 moveVector = ( ( WayPoints[index].position - transform.position ).normalized * Time.deltaTime ) * moveSpeed;
+
         if( guardState == GuardState.Patrolling )
         {
-            Vector3 moveVector = ( ( WayPoints[index].position - transform.position ).normalized * Time.deltaTime ) * moveSpeed;
             body.MovePosition( new Vector2( transform.position.x + moveVector.x, transform.position.y + moveVector.y ) );
-
-            float angle = Mathf.Atan2(moveVector.y,moveVector.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Slerp( transform.rotation, Quaternion.AngleAxis( angle, Vector3.forward ), rotationSpeed );
         }
+
+        float angle = Mathf.Atan2(moveVector.y,moveVector.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Lerp( transform.rotation, Quaternion.AngleAxis( angle, Vector3.forward ), rotationSpeed );
         #endregion
     }
 }

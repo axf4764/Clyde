@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Benjamin
 public class PlayerMovement : MonoBehaviour
@@ -41,14 +42,17 @@ public class PlayerMovement : MonoBehaviour
         if (moveVector!= Vector2.zero)
             moveVector = moveVector.normalized * speed;
 
-        //hard coded stuff | makes the character smaller as he moves upward
+        //hard coded stu    ff | makes the character smaller as he moves upward
         float yLimit = -.7f;
-        transform.localScale = new Vector3(
-            1.75f - Mathf.Abs( yLimit - this.transform.position.y ),
-            1.75f - Mathf.Abs( yLimit - this.transform.position.y ),
-            1.75f - Mathf.Abs( yLimit - this.transform.position.y )
-            ); 
 
+        if( UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Main" )
+        {
+            transform.localScale = new Vector3(
+                1.75f - Mathf.Abs( yLimit - this.transform.position.y ),
+                1.75f - Mathf.Abs( yLimit - this.transform.position.y ),
+                1.75f - Mathf.Abs( yLimit - this.transform.position.y )
+                );
+        }
         body.MovePosition( new Vector2( transform.position.x + moveVector.x, transform.position.y + moveVector.y ) );
 
     }
