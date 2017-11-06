@@ -32,4 +32,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-Clyde Project/Temp/UnityLockfile
+Clyde Project/Temp/
+Clyde Project/Library/metadata
