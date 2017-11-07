@@ -646,8 +646,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileToLoad: Present_Intro
   DialogueStrings: []
-  SecondsBetweenCharacters: 0.06
-  CharacterRateMultiplier: 0.35
+  SecondsBetweenCharacters: 0.04
+  CharacterRateMultiplier: 0.5
   ContinueIcon: {fileID: 960372299}
   StopIcon: {fileID: 1765943577}
   dialoguePanel: {fileID: 1824144821}

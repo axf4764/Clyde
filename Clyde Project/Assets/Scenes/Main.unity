@@ -637,8 +637,8 @@ MonoBehaviour:
   DialogueStrings:
   - It's just a tree.
   hasOptions: 
-  SecondsBetweenCharacters: 0.075
-  CharacterRateMultiplier: 0.4
+  SecondsBetweenCharacters: 0.04
+  CharacterRateMultiplier: 0.5
   EntranceDestination: 
   ContinueIcon: {fileID: 1796714518}
   StopIcon: {fileID: 704278941}
@@ -908,8 +908,8 @@ MonoBehaviour:
   - You hear some rumbling in the distance
   - Proceed?
   hasOptions: 0001
-  SecondsBetweenCharacters: 0.075
-  CharacterRateMultiplier: 0.4
+  SecondsBetweenCharacters: 0.04
+  CharacterRateMultiplier: 0.5
   EntranceDestination: Googa Rush
   ContinueIcon: {fileID: 1796714518}
   StopIcon: {fileID: 704278941}
@@ -1008,8 +1008,8 @@ MonoBehaviour:
   - Maybe I should gather some wood to create tools.
   - Go to collect resources?
   hasOptions: 000001
-  SecondsBetweenCharacters: 0.075
-  CharacterRateMultiplier: 0.4
+  SecondsBetweenCharacters: 0.04
+  CharacterRateMultiplier: 0.5
   EntranceDestination: Wood Chopping
   ContinueIcon: {fileID: 1796714518}
   StopIcon: {fileID: 704278941}
