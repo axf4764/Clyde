@@ -88,7 +88,8 @@ public class CutsceneDialogue : MonoBehaviour
                     }
                     else if( index != textAsset.text.Length )
                     {
-                        DialogueStrings[ currentLine ] += textAsset.text[ index ];
+                        if(currentLine< nLines)
+                            DialogueStrings[ currentLine ] += textAsset.text[ index ];
                     }
                 }
             }

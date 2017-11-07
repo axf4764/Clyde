@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Type Master.unity
-=======
-- path: Assets/Scenes/Stealth.unity
->>>>>>> Merging-some-stuff
+- path: Assets/Scenes/Cutscenes/Cutscene0.unity
   isLoaded: 1
   isActive: 1
